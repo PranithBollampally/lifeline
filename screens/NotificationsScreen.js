@@ -1,19 +1,19 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 
-const BookmarkScreen = () => {
+const NotificationsScreen = ({navigation}) => {
     return (
       <View style={styles.container}>
-        <Text>Bookmark Screen</Text>
+        <Text>Notifications Screen</Text>
         <Button
           title="Click Here"
-          onPress={() => alert('Button Clicked!')}
+          onPress={() => navigation.goBack()}
         />
       </View>
     );
 };
 
-export default BookmarkScreen;
+export default NotificationsScreen;
 
 const styles = StyleSheet.create({
   container: {
