@@ -51,7 +51,7 @@ const MainTabScreen = () => (
         name="Childrens"
         component={ChildrensStackScreen}
         options={{
-          tabBarLabel: 'Childrens',
+          tabBarLabel: 'Children',
           tabBarColor: '#ff00ff',
           tabBarIcon: ({ color }) => (
             <Icon name="group" color={color} size={20} />
@@ -152,9 +152,9 @@ const ChildrensStackScreen = ({navigation}) => (
         fontWeight: 'bold'
         }
     }}>
-        <DetailsStack.Screen name="Childrens" component={ChildrensScreen} options={{
+        <DetailsStack.Screen name="Children" component={ChildrensScreen} options={{
         headerLeft: () => (
-            <Icon.Button name="indent" size={25} backgroundColor="#1f65ff" onPress={() => navigation.openDrawer()}></Icon.Button>
+            <Icon.Button name="indent" size={25} backgroundColor="#ff00ff" onPress={() => navigation.openDrawer()}></Icon.Button>
         )
         }} />
 </DetailsStack.Navigator>

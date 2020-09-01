@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import {View,Button,Text,StyleSheet} from 'react-native';
 import { RadioButton,Checkbox,Switch } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon1 from 'react-native-vector-icons/Ionicons';
 
 const AmbulanceScreen = ({navigation}) => {
   const [checked, setChecked] = useState('first');
@@ -27,8 +28,9 @@ const AmbulanceScreen = ({navigation}) => {
 const onToggleSugar = () => setIsSugarOn(!isSugarOn);
 const onToggleBP = () => setIsBPOn(!isBPOn);
     return (
+      
       <View style={styles.container}>
-        <Text style={styles.questionLabel}>Check the type of emergency</Text>
+        <Text style={styles.questionLabel}>Type of emergency</Text>
          <View style={styles.checkboxContainer}>
             <RadioButton 
                 value="first"
@@ -51,13 +53,13 @@ const onToggleBP = () => setIsBPOn(!isBPOn);
        </View>
        <View style={styles.checkboxContainer}>
             <RadioButton 
-                value="thirtd" 
+                value="third" 
                 status={checked === 'third' ? 'checked' : 'unchecked'}
                 onPress={() => {
                   setChecked('third');
                 }}
             />
-            <Text style={styles.label}>Fits</Text>
+            <Text style={styles.label}>Paralysis</Text>
        </View>
        <View style={styles.checkboxContainer}>
             <RadioButton 
@@ -67,10 +69,20 @@ const onToggleBP = () => setIsBPOn(!isBPOn);
                   setChecked('fourth');
                 }}
             />
-            <Text style={styles.label}>SnakeBite</Text>
+            <Text style={styles.label}>Injured</Text>
+       </View>
+       <View style={styles.checkboxContainer}>
+            <RadioButton 
+                value="fifth"
+                status={checked === 'fifth' ? 'checked' : 'unchecked'}
+                onPress={() => {
+                  setChecked('fifth');
+                }}
+            />
+            <Text style={styles.label}>Convulsions</Text>
        </View>
        
-        <Text style={styles.questionLabel}>Select the patient condition</Text>
+        <Text style={styles.questionLabel}>Patient condition?</Text>
          <View style={styles.checkboxContainer}>
             <RadioButton  
                 value="first"
@@ -136,36 +148,41 @@ const onToggleBP = () => setIsBPOn(!isBPOn);
             />
             <Text style={styles.label}>Your Family Contacts</Text>
        </View>
+       
        <View style={styles.checkboxContainer}>
-            <Checkbox 
-                status={nearAndDear ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setNearAndDear(!nearAndDear);
-                }}
-            />
-            <Text style={styles.label}>Your Near and Dear Contacts</Text>
-       </View>
-       <View style={styles.checkboxContainer}>
-          <Text style={styles.label}>Do You Have Sugar</Text>
+          <Text style={styles.label}>Are you Diabetic</Text>
           <Switch value={isSugarOn} onValueChange={onToggleSugar} />
        </View>  
        <View style={styles.checkboxContainer}>
-          <Text style={styles.label}>Do You Have Blood Pressure</Text>
+          <Text style={styles.label}>Blood Pressure?</Text>
           <Switch value={isBPOn} onValueChange={onToggleBP} />
        </View>         
-       <View style={{  height:50, width:'50%', marginLeft:'0%', marginRight:'5%', marginTop:'2%', marginBottom:'2%',alignContent:'stretch'}}>
-                <Icon.Button
+       <View style={  styles.buttonContainer}>
+       <View style={{  height:50, width:'45%', marginLeft:'0%', marginRight:'5%', marginTop:'2%', marginBottom:'2%',alignContent:'stretch'}}>
+                        <Icon.Button
+                            
+                            name="whatsapp"
+                            backgroundColor="#e63900"
+                            onPress={()=>navigation.navigate('Near And Dear')}>
+                            Alert message
+                        </Icon.Button>
+                </View>
+                <View style={{  height:50, width:'50%', marginLeft:'0%', marginRight:'5%', marginTop:'2%', marginBottom:'2%',alignContent:'stretch'}}>
+                <Icon1.Button
                     
-                    name="address-book"
-                    backgroundColor="#3b5998"
+                    name="md-call"
+                    backgroundColor="#e63900"
                     onPress={()=>navigation.navigate('Near And Dear')}>
-                    Submit The Above Info
-                </Icon.Button>
+                    Place a Call
+                </Icon1.Button>
         </View>
-        
+        </View>
        
         
       </View>
+      
+      
+      
     );
 };
 
@@ -188,13 +205,14 @@ const styles = StyleSheet.create({
     margin:8
   },
   questionLabel:{
-    marginTop:10
+    marginTop:10,
+    fontWeight:'bold'
   },
   buttonContainer:{
     flex: 1, 
     flexDirection:'row',
     alignItems: 'flex-start', 
     justifyContent: 'center',
-    marginLeft:-30
+    marginLeft:-20
   }
 });

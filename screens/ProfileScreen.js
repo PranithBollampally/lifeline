@@ -135,6 +135,62 @@ const { colors } = useTheme();
                     size={20}
                 />
                 <TextInput 
+                    placeholder="Height(in feet)"
+                    placeholderTextColor="#666666"
+                    style={[styles.textInput, {
+                        color: colors.text
+                    }]}
+                    autoCapitalize="none"
+                    onChangeText={(val) => textInputChange(val)}
+                    onEndEditing={(e)=>handleValidUser(e.nativeEvent.text)}
+                />
+                {data.check_textInputChange ? 
+                <Animatable.View
+                    animation="bounceIn"
+                >
+                    <Feather 
+                        name="check-circle"
+                        color="green"
+                        size={20}
+                    />
+                </Animatable.View>
+                : null}
+            </View>
+            <View style={styles.action}>
+                <FontAwesome 
+                    name="user-o"
+                    color={colors.text}
+                    size={20}
+                />
+                <TextInput 
+                    placeholder="Weight(mention kgs/pounds)"
+                    placeholderTextColor="#666666"
+                    style={[styles.textInput, {
+                        color: colors.text
+                    }]}
+                    autoCapitalize="none"
+                    onChangeText={(val) => textInputChange(val)}
+                    onEndEditing={(e)=>handleValidUser(e.nativeEvent.text)}
+                />
+                {data.check_textInputChange ? 
+                <Animatable.View
+                    animation="bounceIn"
+                >
+                    <Feather 
+                        name="check-circle"
+                        color="green"
+                        size={20}
+                    />
+                </Animatable.View>
+                : null}
+            </View>
+            <View style={styles.action}>
+                <FontAwesome 
+                    name="user-o"
+                    color={colors.text}
+                    size={20}
+                />
+                <TextInput 
                     placeholder="Blood Group"
                     placeholderTextColor="#666666"
                     style={[styles.textInput, {
@@ -163,7 +219,7 @@ const { colors } = useTheme();
                     size={20}
                 />
                 <TextInput 
-                    placeholder="Mobile Number"
+                    placeholder="Mobile No"
                     placeholderTextColor="#666666"
                     style={[styles.textInput, {
                         color: colors.text
@@ -212,12 +268,7 @@ const { colors } = useTheme();
                 </Animatable.View>
                 : null}
             </View>
-            <View style={styles.action}>
-                <FontAwesome 
-                    name="user-o"
-                    color={colors.text}
-                    size={20}
-                />
+            <View>
                 <TextInput 
                     placeholder="Address"
                     placeholderTextColor="#666666"
@@ -304,6 +355,34 @@ const { colors } = useTheme();
                 />
                 <TextInput 
                     placeholder="Medications Currently Using"
+                    placeholderTextColor="#666666"
+                    style={[styles.textInput, {
+                        color: colors.text
+                    }]}
+                    autoCapitalize="none"
+                    onChangeText={(val) => textInputChange(val)}
+                    onEndEditing={(e)=>handleValidUser(e.nativeEvent.text)}
+                />
+                {data.check_textInputChange ? 
+                <Animatable.View
+                    animation="bounceIn"
+                >
+                    <Feather 
+                        name="check-circle"
+                        color="green"
+                        size={20}
+                    />
+                </Animatable.View>
+                : null}
+            </View>
+            <View style={styles.action}>
+                <FontAwesome 
+                    name="user-o"
+                    color={colors.text}
+                    size={20}
+                />
+                <TextInput 
+                    placeholder="Address"
                     placeholderTextColor="#666666"
                     style={[styles.textInput, {
                         color: colors.text

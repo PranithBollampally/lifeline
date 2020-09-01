@@ -3,7 +3,9 @@ import {
     View,
     Text,
     Button,
-
+    FlatList,
+    Dimensions,
+    StyleSheet
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -12,15 +14,26 @@ import Icon1 from 'react-native-vector-icons/Fontisto';
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon4 from 'react-native-vector-icons/MaterialIcons';
-
+import * as Animatable from 'react-native-animatable';
+import FamilyDoctorsList from './home-screens/FamilyDoctorsList';
 
 
 
 
 const HomeScreen = ({navigation}) => {
     return (
-      
-       
+      <React.Fragment>
+
+   
+      <View style={styles.header}>
+      <Animatable.Image 
+          animation="bounceIn"
+          duraton="1500"
+      source={require('../assets/lifeline.jpeg')}
+      style={styles.logo}
+      resizeMode="stretch"
+      />
+  </View>
         <View style={{ flex:1, flexDirection:'row', flexWrap:'wrap',  marginTop:'40%', align:'center', justifyContent:'center'}}>
            
             <View style={{  height:50, width:'40%', marginLeft:'5%', marginRight:'5%', marginTop:'2%', marginBottom:'2%',alignContent:'stretch'}}>
@@ -102,42 +115,129 @@ const HomeScreen = ({navigation}) => {
                 </Icon4.Button>
             </View>
         </View>
-     
+        </React.Fragment>
     );
   }
 
   function NearAndDearContacts({ navigation }) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Home screen</Text>
-        <Button
-          title="Near And Dear Contacts"
-     
-        />
-      </View>
-    );
+      
+        <React.Fragment>
+            <FlatList
+        data={[
+          {key: 'Devin',mobile:'3456778'},
+          {key: 'Dan',mobile:'3456778'},
+          {key: 'Dominic',mobile:'3456778'},
+          {key: 'Jackson',mobile:'3456778'},
+          {key: 'James',mobile:'3456778'},
+          {key: 'Joel',mobile:'3456778'},
+          {key: 'John',mobile:'3456778'},
+          {key: 'Jillian',mobile:'3456778'},
+          {key: 'Jimmy',mobile:'3456778'},
+          {key: 'Julie',mobile:'3456778'},
+        ]}
+        renderItem={({item}) => 
+        <View style={styles.itemContainer}>
+           <Text style={styles.item}>{item.key}</Text>
+           <Text style={styles.item}>{item.mobile}</Text>
+           <Icon.Button
+                    
+                    name="pencil"
+                    backgroundColor="#fff"
+                    color="black"
+                    onPress={()=>alert('Edit Doctors Details')}>
+                  
+                </Icon.Button>
+                <Icon.Button
+                  color="black"
+                  name="trash"
+                  backgroundColor="#fff"
+                  onPress={()=>alert('Delete The Doctor')}>
+                
+              </Icon.Button>
+        </View>
+        
+       }
+      />
+        <View style={{  height:50, width:'40%', marginLeft:'5%', marginRight:'5%', marginTop:'2%', marginBottom:'2%',alignContent:'stretch'}}>
+                <Icon.Button
+                  
+                    name="user-plus"
+                    backgroundColor="#3b5998"
+                    onPress={()=>alert('Family Doctors')}>
+                    Add your Near And Dear Contact
+                </Icon.Button>
+        </View>
+  
+        </React.Fragment>
+            );
   }
   
   function MyHealthAssesment({ navigation }) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Home screen</Text>
-        <Button
-          title="Near And Dear Contacts"
-     
-        />
-      </View>
+      <React.Fragment>
+      <FlatList
+  data={[
+    {key: 'Blood Group',keyValue:'O+'},
+    {key: 'Preexisting Diseases',keyValue:'13'},
+    {key: 'Blood Pressure Levels',keyValue:'Normal'},
+    {key: 'Diabetes Levels',keyValue:'Normal'},
+    {key: 'Cholestral levels',keyValue:'3456778'},
+    {key: 'Last visit to a Hospital',keyValue:'1 month ago'},
+    {key: 'Lastest Consulting Doctor Name',keyValue:'Dr Harini'},
+    {key: 'Smoking Habits',keyValue:'no'},
+    {key: 'Drinking Habits',keyValue:'no'},
+    {key: 'Veg/NonVeg',keyValue:'NonVegetarian'},
+    
+  ]}
+  renderItem={({item}) => 
+  <View style={styles.itemContainer}>
+     <Text style={styles.healthItem}>{item.key}</Text>
+     <Text style={styles.item}>{item.keyValue}</Text>
+     <Icon.Button
+              
+              name="pencil"
+              backgroundColor="#fff"
+              color="black"
+              onPress={()=>alert('Edit Doctors Details')}>
+            
+          </Icon.Button>
+          <Icon.Button
+            color="black"
+            name="trash"
+            backgroundColor="#fff"
+            onPress={()=>alert('Delete The Doctor')}>
+          
+        </Icon.Button>
+  </View>
+  
+ }
+/>
+  <View style={{  height:50, width:'50%', marginLeft:'5%', marginRight:'5%', marginTop:'2%', marginBottom:'2%',alignContent:'stretch'}}>
+          <Icon.Button
+            
+              name="user-plus"
+              backgroundColor="#009387"
+              onPress={()=>alert('Family Doctors')}>
+              Add Some More Details of about your Health.
+          </Icon.Button>
+  </View>
+
+  </React.Fragment>
     );
   }
 
   function MedicalReportsScreen({ navigation }) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Home screen</Text>
-        <Button
-          title="Near And Dear Contacts"
-     
-        />
+        <Text>There No Medical Reports Uploaded.Kindly Upload</Text>
+        <Icon3.Button
+            
+              name="briefcase-upload"
+              backgroundColor="#009387"
+              onPress={()=>alert('Family Doctors')}>
+              Upload Medical Reports
+          </Icon3.Button>
       </View>
     );
   }
@@ -145,36 +245,114 @@ const HomeScreen = ({navigation}) => {
   function MedicalPrescriptionsScreen({ navigation }) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Home screen</Text>
-        <Button
-          title="Near And Dear Contacts"
-     
-        />
+        <Text>There No Medical Prescriptions Uploaded.Kindly Upload</Text>
+        <Icon3.Button
+            
+              name="briefcase-upload"
+              backgroundColor="#3b5998"
+              onPress={()=>alert('Family Doctors')}>
+              Upload Medical Prescriptions
+          </Icon3.Button>
       </View>
     );
   }
 
   function FamilyDoctorsScreen({ navigation }) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Family Doctors List</Text>
-        <Button
-          title="Near And Dear Contacts"
-     
-        />
+      <React.Fragment>
+          <FlatList
+      data={[
+        {key: 'Dr Harini',mobile:'3456778'},
+        {key: 'Dr Ram Reddy',mobile:'3456778'},
+        {key: 'Dr Srinath Reddy',mobile:'3456778'},
+        {key: 'Dr Pranith',mobile:'3456778'},
+      ]}
+      renderItem={({item}) => 
+      <View style={styles.itemContainer}>
+         <Text style={styles.item}>{item.key}</Text>
+         <Text style={styles.item}>{item.mobile}</Text>
+         <Icon.Button
+                  
+                  name="pencil"
+                  backgroundColor="#fff"
+                  color="black"
+                  onPress={()=>alert('Edit Doctors Details')}>
+                
+              </Icon.Button>
+              <Icon.Button
+                color="black"
+                name="trash"
+                backgroundColor="#fff"
+                onPress={()=>alert('Delete The Doctor')}>
+              
+            </Icon.Button>
       </View>
-    );
+      
+     }
+    />
+      <View style={{  height:50, width:'40%', marginLeft:'5%', marginRight:'5%', marginTop:'2%', marginBottom:'2%',alignContent:'stretch'}}>
+              <Icon.Button
+                
+                  name="user-plus"
+                  backgroundColor="#009387"
+                  onPress={()=>alert('Family Doctors')}>
+                  Add a Doctor
+              </Icon.Button>
+      </View>
+
+      </React.Fragment>
+          );
   }
 
   function PharmacyContactsScreen({ navigation }) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Home screen</Text>
-        <Button
-          title="Near And Dear Contacts"
-     
-        />
-      </View>
+      <React.Fragment>
+      <FlatList
+  data={[
+    {key: 'Apollo Pharmacy-Lalapet',mobile:'3456778'},
+    {key: 'Mediplus-Malkajgiri',mobile:'3456778'},
+    {key: 'Srinivasa Medicals',mobile:'3456778'},
+    {key: 'Medicity-Somajiguda',mobile:'3456778'},
+    {key: 'Apollo Pharmacy-kondapur',mobile:'3456778'},
+    {key: 'Mediplus-kondapur',mobile:'3456778'},
+    {key: 'Navaneetha Medicals',mobile:'3456778'},
+    {key: 'Medicity-Hyderguda',mobile:'3456778'},
+  ]}
+  renderItem={({item}) => 
+  <View style={styles.itemContainer}>
+     <Text style={styles.pharmacyItemKey}>{item.key}</Text>
+     <Text style={styles.item}>{item.mobile}</Text>
+     <Icon.Button
+              
+              name="pencil"
+              backgroundColor="#fff"
+              color="black"
+              onPress={()=>alert('Edit Doctors Details')}>
+            
+          </Icon.Button>
+          <Icon.Button
+            color="black"
+            name="trash"
+            backgroundColor="#fff"
+            onPress={()=>alert('Delete The Doctor')}>
+          
+        </Icon.Button>
+  </View>
+  
+ }
+/>
+  <View style={{  height:50, width:'50%', marginLeft:'5%', marginRight:'5%', marginTop:'2%', marginBottom:'2%',alignContent:'stretch'}}>
+          <Icon3.Button
+            
+              name="pharmacy"
+              backgroundColor="#009387"
+              onPress={()=>alert('Family Doctors')}>
+              Add Pharmacy Contact
+          </Icon3.Button>
+  </View>
+
+  </React.Fragment>
+      
     );
   }
 
@@ -192,13 +370,53 @@ const HomeScreen = ({navigation}) => {
 
   function MyProfileScreen({ navigation }) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Profile Screen</Text>
-        <Button
-          title="Go to Details"
+      <React.Fragment>
+      <FlatList
+  data={[
+    {key: 'Name',keyValue:'Pranith'},
+    {key: 'Age',keyValue:'13'},
+    {key: 'Sex',keyValue:'male'},
+    {key: 'Blood Group',keyValue:'O+'},
+    {key: 'mobile',keyValue:'3456778'},
+    {key: 'email',keyValue:'abc@abc.com'},
+    {key: 'address',keyValue:'kondapur'},
+    
+    
+  ]}
+  renderItem={({item}) => 
+  <View style={styles.itemContainer}>
+     <Text style={styles.profileItem}>{item.key}</Text>
+     <Text style={styles.item}>{item.keyValue}</Text>
+     <Icon.Button
+              
+              name="pencil"
+              backgroundColor="#fff"
+              color="black"
+              onPress={()=>alert('Edit Doctors Details')}>
+            
+          </Icon.Button>
+          <Icon.Button
+            color="black"
+            name="trash"
+            backgroundColor="#fff"
+            onPress={()=>alert('Delete The Doctor')}>
           
-        />
-      </View>
+        </Icon.Button>
+  </View>
+  
+ }
+/>
+  <View style={{  height:50, width:'50%', marginLeft:'5%', marginRight:'5%', marginTop:'2%', marginBottom:'2%',alignContent:'stretch'}}>
+          <Icon.Button
+            
+              name="user-plus"
+              backgroundColor="#009387"
+              onPress={()=>alert('This will navigate to add more detials screen')}>
+              Add Details. 
+          </Icon.Button>
+  </View>
+
+  </React.Fragment>
     );
   }
   function LogoTitle() {
@@ -246,8 +464,55 @@ const  HomeStackScreen = ({navigation}) => {
 
   export default HomeStackScreen;
 
+  const {height} = Dimensions.get("screen");
+  const height_logo = height *0.28;
 
-
+  const styles = StyleSheet.create({
+    healthItem:{
+      padding: 10,
+      fontSize: 18,
+      height: 44,
+      width:'50%'
+    },
+    header: {
+      flex: 2,
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginBottom:-300,
+      marginTop:-150
+  },
+    profileItem:{
+      padding: 10,
+      fontSize: 18,
+      height: 44,
+      width:'50%'
+    },
+    pharmacyItemKey:{
+      padding: 10,
+      fontSize: 18,
+      height: 44,
+      width:'50%'
+    },
+    logo: {
+      width: height_logo ,
+      height: height_logo,
+      borderRadius:100
+  },
+    itemContainer:{
+      flex: 1,
+      flexDirection: 'row',
+    },
+    container: {
+     flex: 1,
+     paddingTop: 22
+    },
+    item: {
+      padding: 10,
+      fontSize: 18,
+      height: 44,
+      width:'25%'
+    },
+  });
 
 // import React from 'react';
 // import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';

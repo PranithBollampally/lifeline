@@ -23,7 +23,7 @@ const SplashScreen = ({navigation}) => {
             <Animatable.Image 
                 animation="bounceIn"
                 duraton="1500"
-            source={require('../assets/download.jpeg')}
+            source={require('../assets/lifeline.jpeg')}
             style={styles.logo}
             resizeMode="stretch"
             />
@@ -71,7 +71,9 @@ const styles = StyleSheet.create({
   header: {
       flex: 2,
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      width:'100%',
+      height:'100%'
   },
   footer: {
       flex: 1,
@@ -82,8 +84,9 @@ const styles = StyleSheet.create({
       paddingHorizontal: 30
   },
   logo: {
-      width: height_logo,
-      height: height_logo
+      width: height_logo + 75,
+      height: height_logo + 75,
+      borderRadius:100
   },
   title: {
       color: '#05375a',

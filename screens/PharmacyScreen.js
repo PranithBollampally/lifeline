@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import {View,Button,Text,StyleSheet} from 'react-native';
 import { RadioButton,Checkbox,Switch } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon1 from 'react-native-vector-icons/Ionicons';
 
 const PharmacyScreen = ({navigation}) => {
 //   const [checked, setChecked] = useState('first');
@@ -45,29 +46,27 @@ const onToggleBP = () => setIsBPOn(!isBPOn);
                   }}
             />
             <Text style={styles.label}>Medical Prescription</Text>
-       </View>
-      
-      
-
-       <View style={styles.checkboxContainer}>
-          <Text style={styles.label}>Do You Have Sugar</Text>
-          <Switch value={isSugarOn} onValueChange={onToggleSugar} />
-       </View>  
-       <View style={styles.checkboxContainer}>
-          <Text style={styles.label}>Do You Have Blood Pressure</Text>
-          <Switch value={isBPOn} onValueChange={onToggleBP} />
-       </View>         
-       <View style={{  height:50, width:'50%', marginLeft:'0%', marginRight:'5%', marginTop:'2%', marginBottom:'2%',alignContent:'stretch'}}>
-                <Icon.Button
+       </View> 
+       <View style={  styles.buttonContainer}>
+       <View style={{  height:50, width:'45%', marginLeft:'0%', marginRight:'5%', marginTop:'2%', marginBottom:'2%',alignContent:'stretch'}}>
+                        <Icon.Button
+                            
+                            name="whatsapp"
+                            backgroundColor="#009933"
+                            onPress={()=>navigation.navigate('Near And Dear')}>
+                            Alert message
+                        </Icon.Button>
+                </View>
+                <View style={{  height:50, width:'50%', marginLeft:'0%', marginRight:'5%', marginTop:'2%', marginBottom:'2%',alignContent:'stretch'}}>
+                <Icon1.Button
                     
-                    name="address-book"
-                    backgroundColor="#3b5998"
+                    name="md-call"
+                    backgroundColor="#009933"
                     onPress={()=>navigation.navigate('Near And Dear')}>
-                    Submit The Above Info
-                </Icon.Button>
+                    Place a Call
+                </Icon1.Button>
         </View>
-        
-       
+        </View>
         
       </View>
     );
@@ -81,7 +80,8 @@ const styles = StyleSheet.create({
     
     alignItems: 'flex-start', 
     justifyContent: 'center',
-    marginLeft:40
+    marginLeft:40,
+    marginTop:'25%'
   },
   checkboxContainer: {
     flexDirection: "row",
@@ -99,6 +99,7 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     alignItems: 'flex-start', 
     justifyContent: 'center',
-    marginLeft:-30
+    marginLeft:-20,
+    
   }
 });
